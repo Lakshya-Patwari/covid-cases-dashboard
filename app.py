@@ -115,9 +115,8 @@ def update_graph(type):
         npat=df[df["current_status"]==type]
         pbar=npat["detected_state"].value_counts().reset_index()
     
-    return { "data" : [go.Bar(x=pbar["detected_state"],y=pbar["count"])],
-            "layout":go.Layout(title="Total State Count")
-            }
+    fig = px.bar(pbar, x="detected_state", y="count", title="Total State Count")
+    return fig
 
 if __name__ =="__main__":
     app.run(debug = True)
